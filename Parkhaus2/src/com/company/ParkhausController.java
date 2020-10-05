@@ -1,6 +1,7 @@
 package com.company;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class ParkhausController
 {
@@ -18,27 +19,48 @@ public class ParkhausController
         model.currentParkingFeePerHour = newParkingFee;
     }
 
-    public void setNewMonthlyParkingTicketPrice(BigDecimal newMonthlyParkingTicketPrice)
+    public void besucherEinfahrt()
     {
-        model.currentMonthlyParkingTicketPricePerHour = newMonthlyParkingTicketPrice;
+        if(model.insgesamteBesucher.size() < model.maxBesucher)
+        {
+            model.aktuelleBesucher.add(new ParkhausTicket());
+            //Update view
+        }
+        //else
+        // "Parkhaus voll!"
     }
 
-    public void addBesucher(ParkhausEinfahrt besucher)
+    public void besucherBezahlt(ParkhausTicket besucher)
     {
-        model.aktuelleBesucher.add(besucher);
+        besucher.ticketBezahlt = true;
+        LocalDateTime currentTime = LocalDateTime.now();
+        model.insgesamteBesucher.add(new ParkhausBezahlung(besucher.timeEnter, currentTime,model.calculateTicketPrice(besucher.timeEnter, LocalDateTime.now())));
+        //Update view
     }
 
-    public void removeBesucher(ParkhausEinfahrt besucher)
+    public void besucherAusfahrt(ParkhausTicket besucher)
     {
-        model.aktuelleBesucher.remove(besucher);
-    }
+        if(besucher.ticketBezahlt)
+        {
+            model.aktuelleBesucher.remove(besucher);
+            //Update view
+            return;
+        }
 
-    public ParkhausEinfahrt getBesucher(int besucher)
-    {
-        return model.aktuelleBesucher.get(besucher);
+        //"Nicht bezahlt!!"
     }
 
     public void viewIncomeList()
+    {
+
+    }
+
+    public void viewCurrentlyParkedList()
+    {
+
+    }
+
+    public void viewExitList()
     {
 
     }
@@ -48,5 +70,5 @@ public class ParkhausController
 
     }
 
-    //Neue Ticketmaschinenklasse mit Referenz zu diesem Controller für Einparken und ausparken mit und ohne prepaid tickets
+
 }

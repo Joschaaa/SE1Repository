@@ -1,6 +1,11 @@
-public class BezahlAutomat {
+package com.company;
 
-    public void besucherAusfahrt(ParkhausEinfahrt b){
-        ParkhausController.removeBesucher(b);
+public class BezahlAutomat
+{
+    ParkhausController controller;
+
+    public void besucherBezahlt(ParkhausTicket besucher)
+    {
+        controller.besucherBezahlt(besucher);
     }
 }

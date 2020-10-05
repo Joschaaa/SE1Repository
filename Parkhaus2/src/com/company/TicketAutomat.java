@@ -1,6 +1,16 @@
-public class TicketAutomat {
+package com.company;
 
-    public void neuerBesucher(){
-        ParkhausController.addBesucher(new ParkhausEinfahrt());
+public class TicketAutomat
+{
+    ParkhausController controller;
+
+    public void besucherAusfahrt(ParkhausTicket b)
+    {
+        controller.besucherAusfahrt(b);
+    }
+
+    public void besucherEinfahrt()
+    {
+        controller.besucherEinfahrt();
     }
 }
