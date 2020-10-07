@@ -7,16 +7,16 @@ public class ParkhausController
 {
     ParkhausModel model;
     ParkhausView view;
-    public TicketAutomat ta;
-    public BezahlAutomat ba;
+    public TicketAutomat ticketAutomat; //Der Automat an dem das Ticket gezogen wird beim Einfahren
+    public BezahlAutomat bezahlAutomat; //Der Automat an dem das Ticket bezahlt wird bevor man ausfahren will
 
     public ParkhausController(ParkhausModel model, ParkhausView view)
     {
         this.model = model;
         this.view = view;
 
-        ta = new TicketAutomat(this);
-        ba = new BezahlAutomat(this);
+        ticketAutomat = new TicketAutomat(this);
+        bezahlAutomat = new BezahlAutomat(this);
     }
 
     public void setNewParkingFee(BigDecimal newParkingFee)
@@ -39,7 +39,7 @@ public class ParkhausController
     {
         besucher.ticketBezahlt = true;
         LocalDateTime currentTime = LocalDateTime.now();
-        model.insgesamteBesucher.add(new ParkhausBezahlung(besucher.timeEnter, currentTime,model.calculateTicketPrice(besucher.timeEnter, LocalDateTime.now())));
+        model.insgesamteBesucher.add(new ParkhausBezahlung(besucher.timeEnter, currentTime, model.calculateTicketPrice(besucher.timeEnter, LocalDateTime.now())));
         //Update view
     }
 
@@ -74,6 +74,4 @@ public class ParkhausController
     {
 
     }
-
-
 }
