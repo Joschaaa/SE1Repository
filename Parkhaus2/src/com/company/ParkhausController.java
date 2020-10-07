@@ -7,11 +7,16 @@ public class ParkhausController
 {
     ParkhausModel model;
     ParkhausView view;
+    public TicketAutomat ta;
+    public BezahlAutomat ba;
 
     public ParkhausController(ParkhausModel model, ParkhausView view)
     {
         this.model = model;
         this.view = view;
+
+        ta = new TicketAutomat(this);
+        ba = new BezahlAutomat(this);
     }
 
     public void setNewParkingFee(BigDecimal newParkingFee)
@@ -21,7 +26,7 @@ public class ParkhausController
 
     public void besucherEinfahrt()
     {
-        if(model.insgesamteBesucher.size() < model.maxBesucher)
+        if(model.aktuelleBesucher.size() < model.maxBesucher) //war vorher insgesamte Besucher??
         {
             model.aktuelleBesucher.add(new ParkhausTicket());
             //Update view

@@ -14,7 +14,6 @@ public class ParkhausModel
     public ArrayList<ParkhausTicket> aktuelleBesucher;
     public ArrayList<ParkhausBezahlung> insgesamteBesucher;
     public int maxBesucher = 8;
-
     public BigDecimal currentParkingFeePerHour = new BigDecimal("1.50");
 
     public BigDecimal getAktuelleEinnahmen(FilterAbstände filter)
