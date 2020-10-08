@@ -1,6 +1,6 @@
 var isAdmin = false;
 
-var parkingSpaces = document.getElementsByClassName("parkingSpace");
+var parkingSpaces;
 var occupiedCount;
 
 const ParkingSpaceState = {
@@ -150,7 +150,7 @@ function loadTicketData()
     callFunction("GetEarnings", "", "getEarnings");
 }
 
-function callFunction(func, param = "", resultfunc = "") //Rufe Methode im Servlet durch doPost nach Namen und mit optionalen Parametern auf; resultfunc ist die optionale Methode in script.js, die evtl. Ausgabeparameter verarbeitet
+function callFunction(func, param = "", resultfunc = "")
 {   
     jQuery(function() 
     {        
@@ -178,5 +178,5 @@ function updateTicketList(param)
 
 function getEarnings(param)
 {
-    document.getElementById("earnings").innerHTML = param;
+    document.getElementById("earnings").innerHTML = "Gesamteinnahmen: " + param;
 }
