@@ -171,12 +171,12 @@ function callFunction(func, param = "", resultfunc = "")
     });   
 }
 
-function getTicketList(param)
+function getTicketList(ticketList)
 {
-    document.getElementById("data").innerHTML = param;
+    document.getElementById("data").innerHTML = ticketList;
 }
 
-function getEarnings(param)
+function getEarnings(earnings)
 {
-    document.getElementById("earnings").innerHTML = "Gesamteinnahmen: " + param;
+    document.getElementById("earnings").innerHTML = "Gesamteinnahmen: " + earnings;
 }
