@@ -84,6 +84,6 @@ public class ParkhausView
             einnnahmen = einnnahmen.add(filteredList.get(i).moneyPaid);
         }
 
-        return "Gesamteinnahmen: &nbsp&nbsp&nbsp&nbsp" + String.format("%.2f", einnnahmen) + "€";
+        return String.format("%.2f", einnnahmen);
     }
 }

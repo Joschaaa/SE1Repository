@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkhausControllerTest
-{    
+{
     static ParkhausController controller = ParkhausController.GetInstance();
 
     @org.junit.jupiter.api.Test
@@ -37,10 +37,10 @@ class ParkhausControllerTest
         controller.besucherBezahlt(0);
         assertTrue(controller.model.aktuelleBesucher[0].ticketBezahlt);
 
-        assertEquals("1.50",controller.view.getEarnings(controller.model.insgesamteBesucher,FilterAbstände.Tag));
-        assertEquals("1.50",controller.view.getEarnings(controller.model.insgesamteBesucher,FilterAbstände.Woche));
-        assertEquals("1.50",controller.view.getEarnings(controller.model.insgesamteBesucher,FilterAbstände.Monat));
-        assertEquals("1.50",controller.view.getEarnings(controller.model.insgesamteBesucher,FilterAbstände.Jahr));
+        assertEquals("1,50",controller.view.getEarnings(controller.model.insgesamteBesucher,FilterAbstände.Tag));
+        assertEquals("1,50",controller.view.getEarnings(controller.model.insgesamteBesucher,FilterAbstände.Woche));
+        assertEquals("1,50",controller.view.getEarnings(controller.model.insgesamteBesucher,FilterAbstände.Monat));
+        assertEquals("1,50",controller.view.getEarnings(controller.model.insgesamteBesucher,FilterAbstände.Jahr));
     }
 
     @org.junit.jupiter.api.Test
