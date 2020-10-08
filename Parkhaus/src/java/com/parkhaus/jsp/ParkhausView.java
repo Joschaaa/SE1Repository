@@ -7,10 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class ParkhausView 
 {    
-    public String updateTicketList(ArrayList<ParkhausBezahlung> bezahlungen)
+    public String generateTicketList(ArrayList<ParkhausBezahlung> bezahlungen)
     {
         String output = 
         "<tr>\n" +
