@@ -19,32 +19,31 @@ public class ParkhausServlet extends HttpServlet
         String param = request.getParameter("param");
         String result = "";
         
-        ParkhausController controller = ParkhausController.GetInstance();
+        ParkhausController controller = ParkhausController.getInstance();
         
         switch (func)
         {       
-            case "Initialize":
-                controller.Initialize(Integer.parseInt(param));
+            case "initialize":
+                controller.initialize(Integer.parseInt(param)); //param: Parkplatz-Anzahl
                 break;
-            case "Enter":
-                controller.besucherEinfahrt(Integer.parseInt(param));
+            case "enter":
+                controller.besucherEinfahrt(Integer.parseInt(param)); //param: Parkplatz-Index
                 break;    
-            case "Pay":
-                controller.besucherBezahlt(Integer.parseInt(param));
+            case "pay":
+                controller.besucherBezahlt(Integer.parseInt(param)); //param: Parkplatz-Index
                 break;                  
-            case "Leave":
-                controller.besucherAusfahrt(Integer.parseInt(param));
+            case "leave":
+                controller.besucherAusfahrt(Integer.parseInt(param)); //param: Parkplatz-Index
                 break;               
-            case "UpdateTicketList":
-                result = controller.UpdateTicketList();
+            case "getTicketList":
+                result = controller.getTicketList();
                 break;             
-            case "GetEarnings":
-                result = controller.GetEarnings();
+            case "getEarnings":
+                result = controller.getEarnings();
                 break;
         }
 
         response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().write(result);
-        
+        response.getWriter().write(result);        
     }
 }

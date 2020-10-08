@@ -77,7 +77,7 @@ public class ParkhausView
                 break;
         }
 
-        if(filteredList.isEmpty()) return "";
+        if (filteredList.isEmpty()) return "";
 
         for (int i = 0; i < filteredList.size(); i++)
         {

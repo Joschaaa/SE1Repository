@@ -12,7 +12,7 @@ public class ParkhausController
     
     static ParkhausController _instance;
     
-    public static ParkhausController GetInstance()
+    public static ParkhausController getInstance()
     {
         if (_instance == null)
             _instance = new ParkhausController(new ParkhausModel(), new ParkhausView());
@@ -26,22 +26,21 @@ public class ParkhausController
         this.view = view;
     }
     
-    public void Initialize(int parkingSpaceCount)
+    public void initialize(int parkingSpaceCount)
     {
         model.aktuelleBesucher = new ParkhausTicket[parkingSpaceCount];
         model.insgesamteBesucher.clear();
     }
     
-    public String UpdateTicketList()
+    public String getTicketList()
     {
         return view.updateTicketList(model.insgesamteBesucher);
     }
     
-    public String GetEarnings()
+    public String getEarnings()
     {
         return view.getEarnings(model.insgesamteBesucher, FilterAbstände.Jahr);
-    }
-    
+    }   
     
     public void setNewParkingFee(BigDecimal newParkingFee)
     {
@@ -63,7 +62,7 @@ public class ParkhausController
 
     public void besucherAusfahrt(int besucherID)
     {
-        if(model.aktuelleBesucher[besucherID].ticketBezahlt)
+        if (model.aktuelleBesucher[besucherID].ticketBezahlt)
         {
             model.aktuelleBesucher[besucherID] = null;
             return;
