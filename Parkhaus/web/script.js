@@ -30,7 +30,7 @@ function switchToUser(type)
     if (isAdmin)
     {
         $('#content').load("admin.jsp", function() {
-            loadTicketData();
+            generateTicketList();
         });
     }
     else
@@ -144,7 +144,7 @@ function updateParkingSpace()
     });    
 }
 
-function loadTicketData()
+function generateTicketList()
 {
     callFunction("getTicketList", "", "getTicketList");
     callFunction("getEarnings", "", "getEarnings");
@@ -152,7 +152,7 @@ function loadTicketData()
 
 function callFunction(func, param = "", resultfunc = "")
 {   
-    jQuery(function() 
+    jQuery(function() //Quelle: https://stackoverflow.com/questions/5046930/jquery-send-string-as-post-parameters
     {        
         $.ajax({
             url : 'ParkhausServlet',
@@ -162,7 +162,7 @@ function callFunction(func, param = "", resultfunc = "")
                 func: func,
                 param: param
             },
-            success : function(data) 
+            success : function(data)
             {
                 if (resultfunc !== "")
                     window[resultfunc](data);
