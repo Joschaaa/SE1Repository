@@ -15,7 +15,7 @@ var parkingSpaceStates = new Array(parkingSpaceCount).fill(ParkingSpaceState.Emp
 
 function initialize()
 {
-    callFunction("Initialize", parkingSpaceCount + "");
+    callFunction("initialize", parkingSpaceCount + "");
 }
 
 function switchUser()
@@ -54,7 +54,7 @@ function enter(parkingSpace)
     setOccupiedCount(occupiedCount + 1);
     parkingSpaceStates[parkingSpace.id] = ParkingSpaceState.Occupied;
     
-    callFunction("Enter", parkingSpace.id + "");
+    callFunction("enter", parkingSpace.id + "");
 }
 
 function tryPay(parkingSpace)
@@ -67,7 +67,7 @@ function pay(parkingSpace)
 {
     parkingSpace.classList.replace('occupied', 'payed');
     parkingSpaceStates[parkingSpace.id] = ParkingSpaceState.Payed;
-    callFunction("Pay", parkingSpace.id + "");
+    callFunction("pay", parkingSpace.id + "");
 }
 
 function tryLeave(parkingSpace)
@@ -81,7 +81,7 @@ function leave(parkingSpace)
     parkingSpace.classList.remove('payed');    
     setOccupiedCount(occupiedCount - 1);
     
-    callFunction("Leave", parkingSpace.id + "");
+    callFunction("leave", parkingSpace.id + "");
 
     parkingSpaceStates[parkingSpace.id] = ParkingSpaceState.Empty;
 }
@@ -146,8 +146,8 @@ function updateParkingSpace()
 
 function loadTicketData()
 {
-    callFunction("UpdateTicketList", "", "updateTicketList");
-    callFunction("GetEarnings", "", "getEarnings");
+    callFunction("getTicketList", "", "getTicketList");
+    callFunction("getEarnings", "", "getEarnings");
 }
 
 function callFunction(func, param = "", resultfunc = "")
@@ -171,7 +171,7 @@ function callFunction(func, param = "", resultfunc = "")
     });   
 }
 
-function updateTicketList(param)
+function getTicketList(param)
 {
     document.getElementById("data").innerHTML = param;
 }
